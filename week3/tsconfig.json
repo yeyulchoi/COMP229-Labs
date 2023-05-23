@@ -15,7 +15,7 @@
         "esModuleInterop": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "moduleresolution":"Node"
+        "moduleResolution":"Node"
     },
     "exclude":["node_modelues"]
 }
