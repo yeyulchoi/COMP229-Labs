@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
+const app_1 = __importDefault(require("./Server/Config/app"));
 const debug_1 = __importDefault(require("debug"));
 (0, debug_1.default)(('week3:server'));
-var http = require('http');
-var port = normalizePort(process.env.PORT || '3000');
+const http_1 = __importDefault(require("http"));
+const port = normalizePort(process.env.PORT || '3000');
 app_1.default.set('port', port);
-var server = http.createServer(app_1.default);
+const server = http_1.default.createServer(app_1.default);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -28,7 +28,7 @@ function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
     }
-    var bind = typeof port === 'string'
+    let bind = typeof port === 'string'
         ? 'Pipe ' + port
         : 'Port ' + port;
     switch (error.code) {
@@ -45,10 +45,8 @@ function onError(error) {
     }
 }
 function onListening() {
-    var addr = server.address();
-    var bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
+    let addr = server.address();
+    let bind = 'pipe ' + addr;
     (0, debug_1.default)('Listening on ' + bind);
 }
 //# sourceMappingURL=server.js.map
